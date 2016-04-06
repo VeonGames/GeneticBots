@@ -1,2 +1,2 @@
 # GeneticBots
-Evolution to solve tasts
+Evolution to solve tasks
