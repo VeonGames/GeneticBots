@@ -27,6 +27,9 @@ public class Drawer extends JComponent
             }
         }
         g.setColor(Color.black);
-        g.drawString("Generation: " + GeneticBots.getGenerations(), 100, 100);
+        g.drawString(GeneticBots.getStats(0), 5, 10);
+        g.drawString(GeneticBots.getStats(1), 5, 25);
+        g.drawString(GeneticBots.getStats(2), 5, 40);
+        g.drawString(GeneticBots.getStats(3), 5, 55);
     }
 }

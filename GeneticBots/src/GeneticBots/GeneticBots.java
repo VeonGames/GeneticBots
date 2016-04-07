@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class GeneticBots
 {
+    private static int fps;
     private static final int frames = 300;
     private static int population;
     private static int barriers;
@@ -87,7 +88,7 @@ public class GeneticBots
                 //System.out.println(k);
                 try
                 {
-                    Thread.sleep(1000/150);
+                    Thread.sleep(1000/fps);
                 }
                 catch (InterruptedException ex)
                 {
@@ -239,5 +240,19 @@ public class GeneticBots
         GeneticBots.mutation = mutation;
     }
     
+    public static String getStats(int i)
+    {
+        
+        String[] out = {"Generation:    " + GeneticBots.getGenerations(),
+                        "Population:    " + population,
+                        "Frames/Second: " + fps,
+                        "Mutation Rate: " + mutation};
+        return out[i];
+    }
+
+    public static void setFps(int fps)
+    {
+        GeneticBots.fps = fps;
+    }
     
 }
