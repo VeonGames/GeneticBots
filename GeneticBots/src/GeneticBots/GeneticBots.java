@@ -61,11 +61,11 @@ public class GeneticBots
 
             for (int i = 0; i < 3; i++)
             {
-                temp[0][i] = (int) (Math.random() * 360);
+                temp[0][i] = (Math.random() * 360);
             }
             for (int i = 0; i < 3; i++)
             {
-                temp[1][i] = (double) (Math.random() * .002) + 0;
+                temp[1][i] = (double) (Math.random() * .0001) + 0;
             }
             double t = 0;
             for (int i = 0; i < 3; i++)

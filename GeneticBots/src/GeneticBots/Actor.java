@@ -19,8 +19,8 @@ public class Actor
         this.color=color;
         this.shape=1;
         this.radius=radius;
-        length=-1;
-        width=-1;
+        length=radius*2;
+        width=radius*2;
     }
     
     public Actor(int x, int y, Color color, int width, int length)
