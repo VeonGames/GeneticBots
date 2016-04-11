@@ -17,8 +17,7 @@ public class Properties extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,10 +45,8 @@ public class Properties extends javax.swing.JFrame
         sMutation.setMaximum(1000);
         sMutation.setMinorTickSpacing(10);
         sMutation.setPaintTicks(true);
-        sMutation.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        sMutation.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sMutationStateChanged(evt);
             }
         });
@@ -61,10 +58,8 @@ public class Properties extends javax.swing.JFrame
         sPop.setMinimum(1);
         sPop.setMinorTickSpacing(2);
         sPop.setPaintTicks(true);
-        sPop.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        sPop.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sPopStateChanged(evt);
             }
         });
@@ -76,19 +71,15 @@ public class Properties extends javax.swing.JFrame
         sBarrier.setMinorTickSpacing(1);
         sBarrier.setPaintTicks(true);
         sBarrier.setValue(5);
-        sBarrier.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        sBarrier.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sBarrierStateChanged(evt);
             }
         });
 
         bStart.setText("Start");
-        bStart.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        bStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bStartActionPerformed(evt);
             }
         });
@@ -106,10 +97,8 @@ public class Properties extends javax.swing.JFrame
         sFPS.setMinimum(1);
         sFPS.setPaintTicks(true);
         sFPS.setValue(150);
-        sFPS.addChangeListener(new javax.swing.event.ChangeListener()
-        {
-            public void stateChanged(javax.swing.event.ChangeEvent evt)
-            {
+        sFPS.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sFPSStateChanged(evt);
             }
         });

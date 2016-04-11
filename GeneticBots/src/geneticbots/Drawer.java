@@ -22,7 +22,7 @@ public class Drawer extends JComponent
             {
                 case 0: g.fillRect(actors[i].getX(), actors[i].getY(), actors[i].getWidth(), actors[i].getLength());
                     break;
-                case 1: g.fillOval(actors[i].getX(), actors[i].getY(), actors[i].getRadius()*2, actors[i].getRadius()*2);
+                case 1: g.fillOval(actors[i].getX() - actors[i].getRadius(), actors[i].getY() - actors[i].getRadius(), actors[i].getRadius()*2, actors[i].getRadius()*2);
                     break;
             }
         }
