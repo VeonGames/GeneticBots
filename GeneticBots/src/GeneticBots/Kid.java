@@ -50,7 +50,7 @@ public class Kid extends Physics
                 {
                    // x-=speed*Math.cos(direction);
                     //direction = -direction;
-                    if (speed*Math.cos(direction) < 0)
+                    /*if (speed*Math.cos(direction) < 0)
                     {
                         direction = Math.PI -Math.PI -direction;
                     }
@@ -67,6 +67,28 @@ public class Kid extends Physics
                     {
                         direction = .5 * Math.PI - direction;
                         
+                    }*/
+                    if(x + width > b[i].x && x < b[i].x + b[i].width)
+                    {
+                        if (speed*Math.cos(direction) < 0)
+                        {
+                            direction -= Math.PI/2;
+                        }
+                        else
+                        {
+                            direction += Math.PI/2;
+                        }
+                    }
+                    else
+                    {
+                        if (speed*Math.sin(direction) < 0)
+                        {
+                            direction += Math.PI/2;
+                        }
+                        else
+                        {
+                            direction -= Math.PI/2;
+                        }
                     }
                 }
             }
