@@ -2,6 +2,8 @@ package geneticbots;
 
 
 import java.awt.Color;
+import java.awt.Point;
+import java.awt.Rectangle;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +54,10 @@ public class GeneticBots
         {
             actors[k] = new Barrier((int)(Math.random()*(width-15)),(int)(Math.random()*length)-20,(int)(Math.random()*90)+50,(int)(Math.random()*60)+30);
             barrierArray[k] = (Barrier) actors[k];
+            if (actors[k].contains(new Point(sx, sy)) || actors[k].contains(new Rectangle(5, 10, 50, 50)))
+            {
+                k--;
+            }
         }
         
         double[][] temp;
@@ -61,7 +67,7 @@ public class GeneticBots
 
             for (int i = 0; i < 3; i++)
             {
-                temp[0][i] = (Math.random() * 360);
+                temp[0][i] = (Math.random() * 2 * Math.PI);
             }
             for (int i = 0; i < 3; i++)
             {
@@ -78,7 +84,18 @@ public class GeneticBots
             actors[k+barriers]=kids[k];
             physics = kids;
         }
-        
+        kids = nextGen();
+        for (int k = 0; k < frames; k++)
+        {
+            move();
+        }
+        kids = nextGen();
+        for (int i = barriers; i < population + barriers; i++)
+        {
+            actors[i] = kids[i - barriers];
+        }
+        physics = kids;
+        generation++;
         while(true)
         {
             for (int k = 0; k < frames; k++)
