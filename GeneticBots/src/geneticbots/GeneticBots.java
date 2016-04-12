@@ -41,8 +41,6 @@ public class GeneticBots
         holder.setBounds(0,0,width,length);
         final JPanel homePanel = new JPanel();
         holder.getContentPane().add(theDrawer);
-        holder.setVisible(true);
-        holder.repaint();
         barrierArray = new Barrier[barriers];
         physics = new Physics[population];
         kids = new Kid[population];
@@ -68,34 +66,40 @@ public class GeneticBots
             for (int i = 0; i < 3; i++)
             {
                 temp[0][i] = (Math.random() * 2 * Math.PI);
+                System.out.println();
             }
             for (int i = 0; i < 3; i++)
             {
                 temp[1][i] = (double) (Math.random() * .0001) + 0;
             }
-            double t = 0;
-            for (int i = 0; i < 3; i++)
+            double sum=0;
+            for(int i=0;i<3;i++)
             {
-                t = (Math.random() * (100 - t))/100;
-                temp[2][i] = t;
+                temp[2][i] = Math.random();
+                sum+=temp[2][i];
+            }
+            for(int i=0;i<3;i++)
+            {
+                temp[2][i]/=sum;
             }
             
             kids[k] = new Kid(sx, sy, temp, Color.BLUE);
             actors[k+barriers]=kids[k];
             physics = kids;
         }
-        kids = nextGen();
-        for (int k = 0; k < frames; k++)
-        {
-            move();
-        }
-        kids = nextGen();
-        for (int i = barriers; i < population + barriers; i++)
-        {
-            actors[i] = kids[i - barriers];
-        }
-        physics = kids;
-        generation++;
+//        for (int k = 0; k < frames; k++)
+//        {
+//            move();
+//        }
+//        kids = nextGen();
+//        for (int i = barriers; i < population + barriers; i++)
+//        {
+//            actors[i] = kids[i - barriers];
+//        }
+//        physics = kids;
+//        generation++;
+        holder.setVisible(true);
+        holder.repaint();
         while(true)
         {
             for (int k = 0; k < frames; k++)
@@ -120,6 +124,7 @@ public class GeneticBots
             physics = kids;
             generation++;
         }
+        
     }
     
     public static int getGenerations()
@@ -278,7 +283,7 @@ public class GeneticBots
         String[] out = {"Generation:    " + GeneticBots.getGenerations(),
                         "Population:    " + population,
                         "Frames/Second: " + fps,
-                        "Mutation Rate: " + mutation};
+                        "Mutation Rate: " + mutation + "%"};
         return out[i];
     }
 

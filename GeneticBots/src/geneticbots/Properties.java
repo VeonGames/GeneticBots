@@ -193,7 +193,7 @@ public class Properties extends javax.swing.JFrame
     {//GEN-HEADEREND:event_bStartActionPerformed
         // TODO add your handling code here:
         GeneticBots.setBarriers(sBarrier.getValue());
-        GeneticBots.setMutation(sMutation.getValue() / 100.0);
+        GeneticBots.setMutation(sMutation.getValue() / 1000.0);
         GeneticBots.setPopulation(sPop.getValue());
         GeneticBots.setFps(sFPS.getValue());
         GeneticBots.start = true;
