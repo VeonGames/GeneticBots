@@ -54,7 +54,7 @@ public class GeneticBots
         {
             actors[k] = new Barrier((int)(Math.random()*(width-15)),(int)(Math.random()*length)-20,(int)(Math.random()*90)+50,(int)(Math.random()*60)+30);
             barrierArray[k] = (Barrier) actors[k];
-            if (actors[k].contains(new Point(sx, sy)) || actors[k].contains(new Rectangle(5, 10, 50, 50)))
+            if (actors[k].contains(new Point(sx, sy)) || actors[k].contains(new Rectangle(0, 0, 50, 50)))
             {
                 k--;
             }
@@ -80,7 +80,7 @@ public class GeneticBots
                 temp[2][i] = t;
             }
             
-            kids[k] = new Kid(sx, sy, temp);
+            kids[k] = new Kid(sx, sy, temp, Color.BLUE);
             actors[k+barriers]=kids[k];
             physics = kids;
         }
@@ -174,17 +174,17 @@ public class GeneticBots
                     temp[j]=kids[kids.length-1];
                 }
             }
-            newKids[i] = makeBaby(temp);
+            newKids[i] = makeBaby(temp[0], temp[1]);
         }
         return newKids;
     }
     
-    public static Kid makeBaby(Kid[] parents)
+    public static Kid makeBaby(Kid parent1, Kid parent2)
     {
-        double[][] p1 = parents[0].getGenes();
-        double[][] p2 = parents[1].getGenes();
+        double[][] p1 = parent1.getGenes();
+        double[][] p2 = parent2.getGenes();
         double[][] kid = new double[p1.length][p1[0].length];
-        int r;
+       
         for (int j = 0; j < 3; j++)
         {
             kid[0][j] = (p1[0][j] + p2[0][j]) / 2;
@@ -231,7 +231,22 @@ public class GeneticBots
             kid[2][j] = te;
             
         }
-        return new Kid(sx, sy, kid);
+        
+        Color c;
+        if (Math.random() < mutation)
+        {
+            c = new Color((int) Math.random() * 255 + 1, (int) Math.random() * 255 + 1, (int) Math.random() * 255 + 1);
+        }
+        else
+        {
+            int r, b, g;
+            r = (int) (parent1.color.getRed() + parent2.color.getRed())/2;
+            b = (int) (parent1.color.getBlue() + parent2.color.getBlue())/2;
+            g = (int) (parent1.color.getGreen() + parent2.color.getGreen())/2;
+            c = new Color(r, b, g);
+        }
+        
+        return new Kid(sx, sy, kid, c);
     }
     
     public static void move()

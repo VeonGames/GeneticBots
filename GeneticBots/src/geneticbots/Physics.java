@@ -12,4 +12,9 @@ public abstract class Physics extends Actor
     }
     
     abstract void move(Barrier[] b);
+    
+    public Color getColor()
+    {
+        return color;
+    }
 }

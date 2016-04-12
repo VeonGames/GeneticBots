@@ -12,10 +12,10 @@ public class Kid extends Physics
     private double[][] thrusters = new double[3][3];
     private double[] fuel = new double[3];
     private double fitnes;
-
-    public Kid(int x, int y, double[][] thrusters)
+    
+    public Kid(int x, int y, double[][] thrusters, Color c)
     {
-        super(x, y, Color.BLUE, 7);
+        super(x, y, c, 7);
         for (int i = 0; i < fuel.length; i++)
         {
             fuel[i] = thrusters[2][i] * totalFuel;
@@ -92,4 +92,6 @@ public class Kid extends Physics
     {
         return thrusters;
     }
+    
+    
 }
