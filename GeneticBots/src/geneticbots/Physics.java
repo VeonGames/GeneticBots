@@ -1,6 +1,7 @@
 package geneticbots;
 
 import java.awt.Color;
+import java.util.List;
 
 public abstract class Physics extends Actor
 {
@@ -11,7 +12,7 @@ public abstract class Physics extends Actor
         super(x,y,color,shape);
     }
     
-    abstract void move(Barrier[] b);
+    abstract void move(List<Barrier> b);
     
     public Color getColor()
     {

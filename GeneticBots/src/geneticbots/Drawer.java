@@ -2,6 +2,7 @@ package geneticbots;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 import javax.swing.JComponent;
 
 /**
@@ -12,18 +13,20 @@ public class Drawer extends JComponent
 {    
     public void paint(Graphics g)
     {
-        Actor[] actors = GeneticBots.getActors();
+        List<Actor> actors = GeneticBots.getActors();
         g.setColor(Color.RED);
-        for(int i=0;i<actors.length;i++)
+        for(int i=0;i<actors.size();i++)
         {
             try{
-                g.setColor(actors[i].getColor());
+                g.setColor(actors.get(i).getColor());
 
-                switch(actors[i].getShape())
+                switch(actors.get(i).getShape())
                 {
-                    case 0: g.fillRect(actors[i].x, actors[i].y, actors[i].width, actors[i].height);
+                    case 0: g.fillRect(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
                         break;
-                    case 1: g.fillOval(actors[i].x, actors[i].y, actors[i].width, actors[i].height);
+                    case 1: g.fillOval(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
+                            g.setColor(Color.BLACK);
+                            g.drawOval(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
                         break;
             }
             } catch(Exception e)

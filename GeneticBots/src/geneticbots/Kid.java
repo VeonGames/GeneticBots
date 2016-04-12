@@ -1,6 +1,7 @@
 package geneticbots;
 
 import java.awt.Color;
+import java.util.List;
 
 public class Kid extends Physics
 {
@@ -23,7 +24,7 @@ public class Kid extends Physics
         this.thrusters = thrusters;
     }
 
-    public void move(Barrier[] b)
+    public void move(List<Barrier> b)
     {
         double xAngle, yAngle;
         for (int i = 0; i < fuel.length; i++)
@@ -33,8 +34,6 @@ public class Kid extends Physics
                 xAngle = speed * Math.cos(direction) + thrusters[1][i] * Math.cos(thrusters[0][i]);
                 yAngle = speed * Math.sin(direction) + thrusters[1][i] * Math.sin(thrusters[0][i]);
                 direction = Math.atan(yAngle / xAngle);
-                if(i==0)
-                    System.out.println(direction+" "+speed);
                 if (xAngle < 0)
                 {
                     direction += Math.PI;
@@ -45,14 +44,14 @@ public class Kid extends Physics
         }
         double tx = x + speed * Math.cos(direction);
         double ty = y + speed * Math.sin(direction);
-        for (int i = 0; i < b.length; i++)
+        for (int i = 0; i < b.size(); i++)
         {
             //System.out.println(b[i]);
-            while (intersects(b[i]))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
+            while (intersects(b.get(i)))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
             {
                 tx -= Math.cos(direction);
                 ty -= Math.sin(direction);
-                if (!(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width))
+                if (!(tx + radius > b.get(i).x && tx - radius < b.get(i).x + b.get(i).width))
                 {
                     if (Math.cos(direction) < 0)
                     {
@@ -62,7 +61,7 @@ public class Kid extends Physics
                         direction = Math.PI - direction;
                     }
                     break;
-                } else if (!(ty + radius > b[i].y && ty - radius < b[i].y + b[i].height))
+                } else if (!(ty + radius > b.get(i).y && ty - radius < b.get(i).y + b.get(i).height))
                 {
                     if (Math.sin(direction) < 0)
                     {

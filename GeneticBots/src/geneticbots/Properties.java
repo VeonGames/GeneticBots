@@ -8,6 +8,14 @@ public class Properties extends javax.swing.JFrame
     public Properties()
     {
         initComponents();
+        this.dFPS.setText("" + GeneticBots.fps);
+        this.sFPS.setValue(GeneticBots.fps);
+        this.dBarriers.setText("" + GeneticBots.barriers);
+        this.sBarrier.setValue(GeneticBots.barriers);
+        this.dMutation.setText("" + GeneticBots.mutation);
+        this.sMutation.setValue((int) (GeneticBots.mutation * 1000));
+        this.dPop.setText("" + GeneticBots.population);
+        this.sPop.setValue((int) (GeneticBots.population));
     }
 
     /**
@@ -92,9 +100,10 @@ public class Properties extends javax.swing.JFrame
 
         jLabel5.setText("FPS");
 
-        sFPS.setMajorTickSpacing(100);
-        sFPS.setMaximum(1000);
+        sFPS.setMajorTickSpacing(30);
+        sFPS.setMaximum(300);
         sFPS.setMinimum(1);
+        sFPS.setMinorTickSpacing(6);
         sFPS.setPaintTicks(true);
         sFPS.setValue(150);
         sFPS.addChangeListener(new javax.swing.event.ChangeListener() {
