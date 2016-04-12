@@ -46,83 +46,35 @@ public class Kid extends Physics
         for (int i = 0; i < b.length; i++)
         {
             //System.out.println(b[i]);
-            while ((tx + width > b[i].x && tx < b[i].x + b[i].width) && (ty + length > b[i].y && ty < b[i].y + b[i].length))
+            while ((tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
             {
                 tx -= Math.cos(direction);
                 ty -= Math.sin(direction);
-                if (!(tx + width > b[i].x && tx < b[i].x + b[i].width))
+                if (!(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width))
                 {
-                    if (speed * Math.cos(direction) > 0)
+                    if (Math.cos(direction) < 0)
                     {
-                        direction = - direction;
+                        direction = 2 * Math.PI - direction;
                     } else
                     {
-                        direction =  - direction;
+                        direction = Math.PI - direction;
                     }
-                    
-                } else if (!(ty + length > b[i].y && ty < b[i].y + b[i].length))
+                    break;
+                } else if (!(ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
                 {
-                    if (speed * Math.sin(direction) > 0)
+                    if (Math.sin(direction) > 0)
                     {
-                        direction = -.5 * Math.PI - direction;
+                        direction = 1.5 * Math.PI - direction;
                     } else
                     {
                         direction = .5 * Math.PI - direction;
                     }
+                    break;
                 } 
-                //System.out.println("here");
             }
-//            if(tx + width > b[i].x && tx < b[i].x + b[i].width)
-//            {
-//                if(ty + length > b[i].y && ty < b[i].y + b[i].length)
-//                {
-//                   // x-=speed*Math.cos(direction);
-//                    //direction = -direction;
-//                    /*if (speed*Math.cos(direction) < 0)
-//                    {
-//                        direction = Math.PI -Math.PI -direction;
-//                    }
-//                    else
-//                    {
-//                        direction = -1 * Math.PI - direction;
-//                    }
-//                    if (Math.sin(direction) < 0)
-//                    {
-//                        direction = -.5 * Math.PI - direction;
-//                       
-//                    }
-//                    else
-//                    {
-//                        direction = .5 * Math.PI - direction;
-//                        
-//                    }*/
-//                    if(x + width > b[i].x && x < b[i].x + b[i].width)
-//                    {
-//                        if (speed*Math.cos(direction) < 0)
-//                        {
-//                            direction -= Math.PI/2;
-//                        }
-//                        else
-//                        {
-//                            direction += Math.PI/2;
-//                        }
-//                    }
-//                    else
-//                    {
-//                        if (speed*Math.sin(direction) < 0)
-//                        {
-//                            direction += Math.PI/2;
-//                        }
-//                        else
-//                        {
-//                            direction -= Math.PI/2;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-            x += speed * Math.cos(direction);
-            y += speed * Math.sin(direction);
+            
+            x =  (int) (tx + speed * Math.cos(direction));
+            y =  (int) (ty + speed * Math.sin(direction));
         }
     }
 

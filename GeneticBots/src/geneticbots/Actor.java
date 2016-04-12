@@ -10,7 +10,7 @@ public class Actor
     private int shape;
     protected int length;
     protected int width;
-    private int radius;
+    protected int radius;
     
     public Actor(int x, int y, Color color, int radius)
     {

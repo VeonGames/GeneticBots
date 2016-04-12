@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class GeneticBots
 {
     private static int fps;
-    private static final int frames = 300;
+    private static final int frames = 200;
     private static int population;
     private static int barriers;
     private static Target target;
