@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 public class GeneticBots
 {
@@ -37,6 +38,13 @@ public class GeneticBots
         JFrame holder = new JFrame("GeneticBots");
         Drawer theDrawer = new Drawer();
         holder.setVisible(false);
+        JSlider jslide = new JSlider();
+        jslide.setBounds(5, 60, 150, 20);
+        jslide.setValue(fps);
+        jslide.setMaximum(1000);
+        jslide.setMinimum(1);
+        jslide.setVisible(true);
+        holder.add(jslide);
         holder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         holder.setBounds(0,0,width,length);
         final JPanel homePanel = new JPanel();
@@ -52,7 +60,7 @@ public class GeneticBots
         {
             actors[k] = new Barrier((int)(Math.random()*(width-15)),(int)(Math.random()*length)-20,(int)(Math.random()*90)+50,(int)(Math.random()*60)+30);
             barrierArray[k] = (Barrier) actors[k];
-            if (actors[k].contains(new Point(sx, sy)) || actors[k].contains(new Rectangle(0, 0, 50, 50)))
+            if (actors[k].contains(new Rectangle(sx-50,sy-50, sx+50, sy+50)) || actors[k].contains(new Rectangle(0, 0, 70, 50)))
             {
                 k--;
             }
@@ -68,19 +76,9 @@ public class GeneticBots
                 temp[0][i] = (Math.random() * 2 * Math.PI);
                 System.out.println();
             }
-            /*for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                temp[1][i] = (double) (Math.random() * .0001) + 0;
-            }*/
-            double sum1=0;
-            for(int i=0;i<3;i++)
-            {
-                temp[1][i] = Math.random();
-                sum1+=temp[1][i];
-            }
-            for(int i=0;i<3;i++)
-            {
-                temp[1][i]/=sum1;
+                temp[1][i] =  Math.random() * 1;
             }
             double sum=0;
             for(int i=0;i<3;i++)
@@ -125,6 +123,7 @@ public class GeneticBots
                 {
                     System.out.println(ex);
                 }
+                fps=jslide.getValue();
             }
             kids = nextGen();
             for(int i=barriers;i<population+barriers;i++)
@@ -293,7 +292,7 @@ public class GeneticBots
         String[] out = {"Generation:    " + GeneticBots.getGenerations(),
                         "Population:    " + population,
                         "Frames/Second: " + fps,
-                        "Mutation Rate: " + mutation + "%"};
+                        "Mutation Rate: " + mutation};
         return out[i];
     }
 

@@ -33,6 +33,8 @@ public class Kid extends Physics
                 xAngle = speed * Math.cos(direction) + thrusters[1][i] * Math.cos(thrusters[0][i]);
                 yAngle = speed * Math.sin(direction) + thrusters[1][i] * Math.sin(thrusters[0][i]);
                 direction = Math.atan(yAngle / xAngle);
+                if(i==0)
+                    System.out.println(direction+" "+speed);
                 if (xAngle < 0)
                 {
                     direction += Math.PI;
