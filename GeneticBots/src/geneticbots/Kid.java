@@ -54,7 +54,7 @@ public class Kid extends Physics
                 {
                     if (Math.cos(direction) < 0)
                     {
-                        direction = 2 * Math.PI - direction;
+                        direction = direction - Math.PI;
                     } else
                     {
                         direction = Math.PI - direction;
@@ -62,12 +62,12 @@ public class Kid extends Physics
                     break;
                 } else if (!(ty + radius > b[i].y && ty - radius < b[i].y + b[i].height))
                 {
-                    if (Math.sin(direction) > 0)
+                    if (Math.sin(direction) < 0)
                     {
-                        direction = 1.5 * Math.PI - direction;
+                        direction = - direction;
                     } else
                     {
-                        direction = .5 * Math.PI - direction;
+                        direction = - direction;
                     }
                     break;
                 } 

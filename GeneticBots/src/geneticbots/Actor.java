@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 public class Actor extends Rectangle
 {
     private Color color = Color.BLUE;
-    private int shape;
+    private int shape = 0;
     protected int radius;
     public Actor(int x, int y, Color color, int radius)
     {

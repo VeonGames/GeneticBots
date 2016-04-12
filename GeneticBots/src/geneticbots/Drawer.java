@@ -16,8 +16,12 @@ public class Drawer extends JComponent
         g.setColor(Color.RED);
         for(int i=0;i<actors.length;i++)
         {
-            
+            try{
             g.setColor(actors[i].getColor());
+            } catch(Exception e)
+            {
+                g.setColor(Color.yellow);
+            }
             switch(actors[i].getShape())
             {
                 case 0: g.fillRect(actors[i].x, actors[i].y, actors[i].width, actors[i].height);
