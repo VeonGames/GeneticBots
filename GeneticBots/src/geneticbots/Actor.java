@@ -1,36 +1,26 @@
 package geneticbots;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 
-public class Actor
+public class Actor extends Rectangle
 {
-    protected int x;
-    protected int y;
     private Color color = Color.BLUE;
     private int shape;
-    protected int length;
-    protected int width;
     protected int radius;
-    
     public Actor(int x, int y, Color color, int radius)
     {
-        this.x=x;
-        this.y=y;
+        super(x,y,radius*2,radius*2);
         this.color=color;
         this.shape=1;
         this.radius=radius;
-        length=radius*2;
-        width=radius*2;
     }
     
     public Actor(int x, int y, Color color, int width, int length)
     {
-        this.x=x;
-        this.y=y;
+        super(x,y,width,length);
         this.color=color;
         this.shape=0;
-        this.width=width;
-        this.length=length;
         radius=-1;
     }
     
@@ -39,15 +29,6 @@ public class Actor
         return radius;
     }
     
-    public int getLength()
-    {
-        return length;
-    }
-    
-    public int getWidth()
-    {
-        return width;
-    }
     
     public void setY(int y)
     {
@@ -69,13 +50,4 @@ public class Actor
         return color;
     }
     
-    public int getX()
-    {
-        return x;
-    }
-    
-    public int getY()
-    {
-        return y;
-    }
 }

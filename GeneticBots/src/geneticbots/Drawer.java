@@ -20,9 +20,9 @@ public class Drawer extends JComponent
             g.setColor(actors[i].getColor());
             switch(actors[i].getShape())
             {
-                case 0: g.fillRect(actors[i].getX(), actors[i].getY(), actors[i].getWidth(), actors[i].getLength());
+                case 0: g.fillRect(actors[i].x, actors[i].y, actors[i].width, actors[i].height);
                     break;
-                case 1: g.fillOval(actors[i].getX() - actors[i].getRadius(), actors[i].getY() - actors[i].getRadius(), actors[i].getRadius()*2, actors[i].getRadius()*2);
+                case 1: g.fillOval(actors[i].x, actors[i].y, actors[i].width, actors[i].height);
                     break;
             }
         }

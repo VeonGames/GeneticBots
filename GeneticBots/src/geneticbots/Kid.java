@@ -46,7 +46,7 @@ public class Kid extends Physics
         for (int i = 0; i < b.length; i++)
         {
             //System.out.println(b[i]);
-            while ((tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
+            while (intersects(b[i]))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
             {
                 tx -= Math.cos(direction);
                 ty -= Math.sin(direction);
@@ -60,7 +60,7 @@ public class Kid extends Physics
                         direction = Math.PI - direction;
                     }
                     break;
-                } else if (!(ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
+                } else if (!(ty + radius > b[i].y && ty - radius < b[i].y + b[i].height))
                 {
                     if (Math.sin(direction) > 0)
                     {
