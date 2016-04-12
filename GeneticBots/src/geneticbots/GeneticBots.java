@@ -68,9 +68,19 @@ public class GeneticBots
                 temp[0][i] = (Math.random() * 2 * Math.PI);
                 System.out.println();
             }
-            for (int i = 0; i < 3; i++)
+            /*for (int i = 0; i < 3; i++)
             {
                 temp[1][i] = (double) (Math.random() * .0001) + 0;
+            }*/
+            double sum1=0;
+            for(int i=0;i<3;i++)
+            {
+                temp[1][i] = Math.random();
+                sum1+=temp[1][i];
+            }
+            for(int i=0;i<3;i++)
+            {
+                temp[1][i]/=sum1;
             }
             double sum=0;
             for(int i=0;i<3;i++)
