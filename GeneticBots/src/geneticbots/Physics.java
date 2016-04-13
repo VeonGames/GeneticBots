@@ -7,7 +7,7 @@ public abstract class Physics extends Actor
 {
     protected double direction=0;
     protected double speed=0;
-    public Physics(int x, int y, Color color, int shape)
+    public Physics(double x, double y, Color color, int shape)
     {
         super(x,y,color,shape);
     }

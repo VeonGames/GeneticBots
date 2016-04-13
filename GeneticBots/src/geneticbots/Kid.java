@@ -14,7 +14,7 @@ public class Kid extends Physics
     private double[] fuel = new double[3];
     private double fitnes;
     
-    public Kid(int x, int y, double[][] thrusters, Color c)
+    public Kid(double x, double y, double[][] thrusters, Color c)
     {
         super(x, y, c, 7);
         for (int i = 0; i < fuel.length; i++)
@@ -27,6 +27,7 @@ public class Kid extends Physics
     public void move(List<Barrier> b)
     {
         double xAngle, yAngle;
+        boolean bounce;
         for (int i = 0; i < fuel.length; i++)
         {
             if (fuel[i] > 0)
@@ -42,16 +43,22 @@ public class Kid extends Physics
                 fuel[i] -= thrusters[1][i];
             }
         }
-        double tx = x + speed * Math.cos(direction);
-        double ty = y + speed * Math.sin(direction);
+        x = x + speed * Math.cos(direction);
+        y = y + speed * Math.sin(direction);
+        
         for (int i = 0; i < b.size(); i++)
         {
+            bounce = false;
             //System.out.println(b[i]);
-            while (intersects(b.get(i)))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (ty + radius > b[i].y && ty - radius < b[i].y + b[i].length))
+            while (intersects(b.get(i)))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (y + radius > b[i].y && y - radius < b[i].y + b[i].length))
             {
-                tx -= Math.cos(direction);
-                ty -= Math.sin(direction);
-                if (!(tx + radius > b.get(i).x && tx - radius < b.get(i).x + b.get(i).width))
+                x -= Math.cos(direction);
+                y -= Math.sin(direction);
+                bounce=true;
+            }
+            if(bounce)
+            {
+                if (!(x + radius > b.get(i).x && x - radius < b.get(i).x + b.get(i).width))
                 {
                     if (Math.cos(direction) < 0)
                     {
@@ -60,8 +67,7 @@ public class Kid extends Physics
                     {
                         direction = Math.PI - direction;
                     }
-                    break;
-                } else if (!(ty + radius > b.get(i).y && ty - radius < b.get(i).y + b.get(i).height))
+                } else if (!(y + radius > b.get(i).y && y - radius < b.get(i).y + b.get(i).height))
                 {
                     if (Math.sin(direction) < 0)
                     {
@@ -70,13 +76,10 @@ public class Kid extends Physics
                     {
                         direction = - direction;
                     }
-                    break;
-                } 
+                }
             }
         }
         
-        x =  (int) (tx + speed * Math.cos(direction));
-        y =  (int) (ty + speed * Math.sin(direction));
         
     }
 

@@ -19,14 +19,14 @@ public class Drawer extends JComponent
         {
             try{
                 g.setColor(actors.get(i).getColor());
-                
+                System.out.println(actors.get(i));
                 switch(actors.get(i).getShape())
                 {
-                    case 0: g.fillRect(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
+                    case 0: g.fillRect((int)actors.get(i).x,(int) actors.get(i).y, actors.get(i).width, actors.get(i).height);
                         break;
-                    case 1: g.fillOval(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
+                    case 1: g.fillOval((int) actors.get(i).x, (int)actors.get(i).y, actors.get(i).width, actors.get(i).height);
                             g.setColor(Color.BLACK);
-                            g.drawOval(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
+                            g.drawOval((int) actors.get(i).x, (int) actors.get(i).y, actors.get(i).width, actors.get(i).height);
                         break;
             }
             } catch(Exception e)

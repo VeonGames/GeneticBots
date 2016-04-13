@@ -65,7 +65,7 @@ public class GeneticBots
         kids = new ArrayList();
         actors = new ArrayList();
 
-        target = new Target((width - 60), (length / 2));
+        target = new Target((width - 60.0), (length / 2.0));
 
         
         
@@ -121,7 +121,7 @@ public class GeneticBots
             actors.add(b);
             barrierArray.add(b);
             if (b.contains(new Rectangle(sx - 50, sy - 50, sx + 50, sy + 50))
-                    || actors.get(k).contains(new Rectangle(0, 0, 275, 55))
+                    || actors.get(k).contains(new Rectangle(0, 0, 300, 55))
                     || actors.get(k).contains(target))
             {
                 barrierArray.remove(barrierArray.size() - 1);

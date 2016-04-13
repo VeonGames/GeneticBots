@@ -8,17 +8,18 @@ public class Actor extends Rectangle
     protected Color color = Color.BLUE;
     private int shape = 0;
     protected int radius;
-    public Actor(int x, int y, Color color, int radius)
+    protected double x,y;
+    public Actor(double x, double y, Color color, int radius)
     {
-        super(x,y,radius*2,radius*2);
+        super((int) x, (int) y, radius*2, radius*2);
         this.color=color;
         this.shape=1;
         this.radius=radius;
     }
     
-    public Actor(int x, int y, Color color, int width, int length)
+    public Actor(double x, double y, Color color, int width, int length)
     {
-        super(x,y,width,length);
+        super((int) x, (int) y,width,length);
         this.color=color;
         this.shape=0;
         radius=-1;
