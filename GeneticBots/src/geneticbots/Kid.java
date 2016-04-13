@@ -55,7 +55,7 @@ public class Kid extends Physics
                 {
                     if (Math.cos(direction) < 0)
                     {
-                        direction = direction - Math.PI;
+                        direction = Math.PI-direction;
                     } else
                     {
                         direction = Math.PI - direction;
@@ -75,36 +75,9 @@ public class Kid extends Physics
             }
         }
         
-       /** while (GeneticBots.screen.contains(this))             
-        {
-            //System.out.println("(" +x + ", " + y + ")\t" + "(" +tx + ", " + ty + ")");
-            tx -= Math.cos(direction);
-            ty -= Math.sin(direction);
-            if ((tx + radius < GeneticBots.screen.width && tx - radius > 0))
-            {
-                if (Math.cos(direction) > 0)
-                {
-                    direction = direction - Math.PI; 
-                } else
-                {
-                    direction = Math.PI - direction;
-                }
-                break;
-            } else if ((ty + radius < GeneticBots.screen.height && ty - radius > 0))
-            {
-                if (Math.sin(direction) < 0)
-                {
-                    direction = -direction;
-                } else
-                {
-                    direction = -direction;
-                }
-                break;
-            }
-        }   
         x =  (int) (tx + speed * Math.cos(direction));
         y =  (int) (ty + speed * Math.sin(direction));
-        */
+        
     }
 
     public void setFit(double fit)

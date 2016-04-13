@@ -14,12 +14,12 @@ public class Drawer extends JComponent
     public void paint(Graphics g)
     {
         List<Actor> actors = GeneticBots.getActors();
-        g.setColor(Color.RED);
+        g.setColor(Color.YELLOW);
         for(int i=0;i<actors.size();i++)
         {
             try{
                 g.setColor(actors.get(i).getColor());
-
+                
                 switch(actors.get(i).getShape())
                 {
                     case 0: g.fillRect(actors.get(i).x, actors.get(i).y, actors.get(i).width, actors.get(i).height);
@@ -31,7 +31,10 @@ public class Drawer extends JComponent
             }
             } catch(Exception e)
             {
-                g.setColor(Color.yellow);
+                System.out.println(actors.get(i));
+                actors.get(i).setColor(Color.YELLOW);
+                
+                i--;
             }
         }
         g.setColor(Color.black);

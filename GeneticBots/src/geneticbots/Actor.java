@@ -49,5 +49,13 @@ public class Actor extends Rectangle
     {
         return color;
     }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
     
+    public String toString()
+    {
+        return "(" + x + ", " + y +")\t " + color;
+    }
 }
