@@ -27,8 +27,9 @@ public class GeneticBots
     protected static List<Kid> kids;
     protected static List<Actor> actors;
     protected static int generation;
-    protected static int sx = 100, sy = 550; //start x and y
+    protected static int sx = 100, sy = 500; //start x and y
     static boolean start = false;
+    protected static Rectangle screen;
     public static void main(String[] args)
     {
         Properties.main(args);
@@ -37,6 +38,7 @@ public class GeneticBots
             System.out.print("");
         }
         JFrame holder = new JFrame("GeneticBots");
+        screen = new Rectangle(0,0, holder.getWidth(), holder.getHeight());
         Drawer theDrawer = new Drawer();
         holder.setVisible(false);
         JSlider slideMutation = new JSlider();
@@ -155,6 +157,7 @@ public class GeneticBots
         {
             for (int k = 0; k < frames; k++)
             {
+                screen.setSize(holder.getWidth(), holder.getHeight());
                 move();
                 holder.repaint();
                 //System.out.println(k);
@@ -168,6 +171,7 @@ public class GeneticBots
                 }
                 fps=slideFrames.getValue();
                 mutation=slideMutation.getValue()/1000.0;
+                
             }
             kids = nextGen();
             for(int i=barriers;i<population+barriers;i++)
@@ -342,7 +346,7 @@ public class GeneticBots
     {
         
         String[] out = {"Generation:    " + GeneticBots.getGenerations(),
-                        "Population:    " + population,
+                        "Population:    " + (actors.size() - barriers - 1),
                         "Frames/Second: " + fps,
                         "Mutation Rate: " + mutation};
         return out[i];
