@@ -75,7 +75,7 @@ public class Kid extends Physics
             }
         }
         
-        while (GeneticBots.screen.contains(this))             
+       /** while (GeneticBots.screen.contains(this))             
         {
             //System.out.println("(" +x + ", " + y + ")\t" + "(" +tx + ", " + ty + ")");
             tx -= Math.cos(direction);
@@ -104,7 +104,7 @@ public class Kid extends Physics
         }   
         x =  (int) (tx + speed * Math.cos(direction));
         y =  (int) (ty + speed * Math.sin(direction));
-        
+        */
     }
 
     public void setFit(double fit)
