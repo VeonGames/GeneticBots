@@ -38,7 +38,7 @@ public class GeneticBots
         {
             System.out.print("");
         }
-        JFrame holder = new JFrame("GeneticBots");
+        JFrame holder = new JFrame("GeneticBots v0.8");
         screen = new Rectangle(0, 0, holder.getWidth(), holder.getHeight());
         Drawer theDrawer = new Drawer();
         holder.setVisible(false);
