@@ -43,44 +43,35 @@ public class Kid extends Physics
                 fuel[i] -= thrusters[1][i];
             }
         }
-        x = x + speed * Math.cos(direction);
-        y = y + speed * Math.sin(direction);
+        dx = dx + speed * Math.cos(direction);
+        dy = dy + speed * Math.sin(direction);
         
         for (int i = 0; i < b.size(); i++)
         {
             bounce = false;
             //System.out.println(b[i]);
-            while (intersects(b.get(i)))              //(tx + radius > b[i].x && tx - radius < b[i].x + b[i].width) && (y + radius > b[i].y && y - radius < b[i].y + b[i].length))
+            while (this.intersects(b.get(i))) //((dx + radius > b.get(i).x && dx - radius < b.get(i).x + b.get(i).width) && (y + radius > b.get(i).y && y - radius < b.get(i).y + b.get(i).height))
             {
-                x -= Math.cos(direction);
-                y -= Math.sin(direction);
+                dx -= Math.cos(direction);
+                dy -= Math.sin(direction);
                 bounce=true;
             }
             if(bounce)
             {
-                if (!(x + radius > b.get(i).x && x - radius < b.get(i).x + b.get(i).width))
+                if (!(dx + width > b.get(i).dx && dx < b.get(i).dx + b.get(i).width))//hitting the side
                 {
-                    if (Math.cos(direction) < 0)
-                    {
-                        direction = Math.PI-direction;
-                    } else
-                    {
-                        direction = Math.PI - direction;
-                    }
-                } else if (!(y + radius > b.get(i).y && y - radius < b.get(i).y + b.get(i).height))
+                    direction = Math.PI - direction;
+                    
+                } else if (!(dy + height > b.get(i).dy && dy < b.get(i).dy + b.get(i).height))//hitting the top/botton
                 {
-                    if (Math.sin(direction) < 0)
-                    {
-                        direction = - direction;
-                    } else
-                    {
-                        direction = - direction;
-                    }
+                    direction = - direction;
+                }
+                else
+                {
+                    direction = Math.PI + direction;
                 }
             }
         }
-        
-        
     }
 
     public void setFit(double fit)

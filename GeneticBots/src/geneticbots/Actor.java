@@ -8,10 +8,14 @@ public class Actor extends Rectangle
     protected Color color = Color.BLUE;
     private int shape = 0;
     protected int radius;
-    protected double x,y;
+    protected double dx,dy;
     public Actor(double x, double y, Color color, int radius)
     {
         super((int) x, (int) y, radius*2, radius*2);
+        this.dx = x;
+        this.dy = y;
+        //System.out.println("(" + (int)x + ", " + (int)y +")");
+        
         this.color=color;
         this.shape=1;
         this.radius=radius;
@@ -20,6 +24,8 @@ public class Actor extends Rectangle
     public Actor(double x, double y, Color color, int width, int length)
     {
         super((int) x, (int) y,width,length);
+        this.dx = x;
+        this.dy = y;
         this.color=color;
         this.shape=0;
         radius=-1;
@@ -33,12 +39,12 @@ public class Actor extends Rectangle
     
     public void setY(int y)
     {
-        this.y=y;
+        this.dy=y;
     }
     
     public void setX(int x)
     {
-        this.x=x;
+        this.dx=x;
     }
     
     public int getShape()
@@ -55,8 +61,25 @@ public class Actor extends Rectangle
         this.color = color;
     }
     
+    public void reXY()
+    {
+        super.x = (int) dx;
+        super.y = (int) dy;
+    }
+
+    public boolean intersects(Actor r)
+    {
+        if ((dx + width > r.dx && dx < r.dx + r.width) && (dy + height > r.dy && dy < r.dy + r.height))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    
     public String toString()
     {
-        return "(" + x + ", " + y +")\t " + color;
+        return "(" + dx + ", " + dy +")\t " + color;
     }
 }

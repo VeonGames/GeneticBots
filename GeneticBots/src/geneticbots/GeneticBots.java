@@ -66,7 +66,7 @@ public class GeneticBots
         actors = new ArrayList();
 
         target = new Target((width - 60.0), (length / 2.0));
-
+        
         
         
 
@@ -115,14 +115,15 @@ public class GeneticBots
             }
         }
         actors.add(target);
+        Rectangle startZone = new Rectangle(sx - 100, sy - 100, sx + 100, sy + 100);
         for (int k = 0; k < barriers; k++)
         {
-            Barrier b = new Barrier((int) (Math.random() * (width - 15)), (int) (Math.random() * length) - 20, (int) (Math.random() * 90) + 50, (int) (Math.random() * 60) + 30);
+            Barrier b = new Barrier((Math.random() * (width - 15)), (Math.random() * length) - 20, (int)(Math.random() * 90) + 50, (int) (Math.random() * 60) + 30);
             actors.add(b);
             barrierArray.add(b);
-            if (b.contains(new Rectangle(sx - 50, sy - 50, sx + 50, sy + 50))
-                    || actors.get(k).contains(new Rectangle(0, 0, 300, 55))
-                    || actors.get(k).contains(target))
+            if (b.intersects(startZone)
+                    || actors.get(k).intersects(new Rectangle(0, 0, 300, 55))
+                    || actors.get(k).intersects(target))
             {
                 barrierArray.remove(barrierArray.size() - 1);
                 actors.remove(actors.size()-1);
@@ -190,7 +191,6 @@ public class GeneticBots
                 mutation = slideMutation.getValue() / 1000.0;
 
             }
-            System.out.println("(" + target.x + ", " + target.y + ")");
             kids = nextGen();
             for (int i = 0; i < population; i++)
             {
