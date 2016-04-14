@@ -222,7 +222,7 @@ public class GeneticBots
         int total = 0;
         for (int i = 0; i < kids.size(); i++)
         {
-            kids.get(i).setFit(Math.sqrt(Math.pow(kids.get(i).getX() - target.getX(), 2) + Math.pow(kids.get(i).getY() - target.getY(), 2)));
+            kids.get(i).setFit(Math.sqrt(Math.pow(kids.get(i).getX() - (target.getX() + target.width/2), 2) + Math.pow(kids.get(i).getY() - target.getY() - target.height/2, 2)));
             total += kids.get(i).getFit();
         }
 
