@@ -30,6 +30,8 @@ public class GeneticBots
     protected static int sx = 100, sy = 500; //start x and y
     static boolean start = false;
     protected static Rectangle screen;
+    protected static double closest = 10000.0;
+    protected static double lClosest;
 
     public static void main(String[] args)
     {
@@ -43,7 +45,7 @@ public class GeneticBots
         Drawer theDrawer = new Drawer();
         holder.setVisible(false);
         JSlider slideMutation = new JSlider();
-        slideMutation.setBounds(125, 35, 150, 20);
+        slideMutation.setBounds(125, 40, 150, 20);
         slideMutation.setValue((int) (mutation * 1000));
         slideMutation.setMaximum(1000);
         slideMutation.setMinimum(0);
@@ -122,7 +124,7 @@ public class GeneticBots
             actors.add(b);
             barrierArray.add(b);
             if (b.intersects(startZone)
-                    || actors.get(k).intersects(new Rectangle(0, 0, 300, 55))
+                    || actors.get(k).intersects(new Rectangle(0, 0, 300, 90))
                     || actors.get(k).intersects(target))
             {
                 barrierArray.remove(barrierArray.size() - 1);
@@ -220,9 +222,18 @@ public class GeneticBots
     {
         List<Kid> newKids = new ArrayList();
         int total = 0;
+        lClosest = 10000.0;
         for (int i = 0; i < kids.size(); i++)
         {
             kids.get(i).setFit(Math.sqrt(Math.pow(kids.get(i).getX() - (target.getX() + target.width/2), 2) + Math.pow(kids.get(i).getY() - target.getY() - target.height/2, 2)));
+            if (kids.get(i).getFit() < closest)
+            {
+                closest = kids.get(i).getFit();
+            }
+            if (kids.get(i).getFit() < lClosest)
+            {
+                lClosest = kids.get(i).getFit();
+            }
             total += kids.get(i).getFit();
         }
 
@@ -365,7 +376,9 @@ public class GeneticBots
             "Generation:    " + GeneticBots.getGenerations(),
             "Population:    " + (actors.size() - barriers - 1),
             "Frames/Second: " + fps,
-            "Mutation Rate: " + mutation
+            "Mutation Rate: " + mutation,
+            "Closest:       " + closest,
+            "Last Closest:  " + lClosest
         };
         return out[i];
     }

@@ -45,5 +45,7 @@ public class Drawer extends JComponent
         g.drawString(GeneticBots.getStats(1), 5, 25);
         g.drawString(GeneticBots.getStats(2), 5, 40);
         g.drawString(GeneticBots.getStats(3), 5, 55);
+        g.drawString(GeneticBots.getStats(4), 5, 70);
+        g.drawString(GeneticBots.getStats(5), 5, 85);
     }
 }
