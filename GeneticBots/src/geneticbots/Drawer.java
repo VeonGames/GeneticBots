@@ -15,7 +15,7 @@ public class Drawer extends JComponent
     {
         List<Actor> actors = GeneticBots.getActors();
         g.setColor(Color.YELLOW);
-        for(int i=0;i<actors.size();i++)
+        for(int i=actors.size()-1;i>=0;i--)
         {
             try{
                 g.setColor(actors.get(i).getColor());
