@@ -36,6 +36,15 @@ public class Actor extends Rectangle
         return radius;
     }
     
+    public double getX()
+    {
+        return this.x;
+    }
+    
+    public double getY()
+    {
+        return this.y;
+    }
     
     public void setY(int y)
     {

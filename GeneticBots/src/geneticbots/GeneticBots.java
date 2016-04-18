@@ -1,6 +1,7 @@
 package geneticbots;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,6 +33,8 @@ public class GeneticBots
     protected static Rectangle screen;
     protected static double closest = 10000.0;
     protected static double lClosest;
+    private static Actor newBarrier;
+    private static Point prev;
 
     public static void main(String[] args)
     {
@@ -136,17 +139,47 @@ public class GeneticBots
         {
             public void mouseClicked(MouseEvent me)
             {
-
+                if(me.getButton()==3)
+                {
+                    for(int i=0;i<barrierArray.size();i++)
+                    {
+                        if(barrierArray.get(i).contains(me.getX()-7,me.getY()-30))
+                        {
+                            
+                            barrierArray.remove(i);
+                            actors.remove(i+population+1);
+                        }
+                    }
+                }
             }
 
             public void mousePressed(MouseEvent me)
             {
-                //if(me.getX())
+                if(me.getButton()==1)
+                {
+                    if(actors.get(population).contains(me.getX()-7,me.getY()-30))
+                    {
+                        prev=me.getPoint();
+                    }
+                    else
+                    {
+                        newBarrier = new Actor(me.getX()-7,me.getY()-30,new Color(218,165,32),1,1);
+                        actors.add(newBarrier);
+                    }
+                }
             }
 
             public void mouseReleased(MouseEvent me)
             {
-
+                if(newBarrier!=null)
+                {
+                    Barrier temp = new Barrier(newBarrier.x,newBarrier.y,newBarrier.width,newBarrier.height);
+                    barrierArray.add(temp);
+                    actors.remove(actors.size()-1);
+                    actors.add(temp);
+                    newBarrier=null;
+                }
+                prev=null;
             }
 
             public void mouseEntered(MouseEvent me)
@@ -163,7 +196,20 @@ public class GeneticBots
         {
             public void mouseDragged(MouseEvent me)
             {
-
+                if(newBarrier!=null)
+                {
+                    if(me.getX()-7>newBarrier.x)
+                        newBarrier.width=me.getX()-7-newBarrier.x;
+                    
+                    if(me.getY()-30>newBarrier.y)
+                        newBarrier.height=me.getY()-30-newBarrier.y;
+                }
+                else if(prev!=null)
+                {
+                    actors.get(population).dx+=me.getX()-prev.getX();
+                    target.dy+=me.getY()-prev.getY();
+                    prev=me.getPoint();
+                }
             }
 
             public void mouseMoved(MouseEvent me)

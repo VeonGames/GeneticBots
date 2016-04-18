@@ -70,6 +70,7 @@ public class Kid extends Physics
                 {
                     direction = Math.PI + direction;
                 }
+                //speed=0;
             }
         }
     }
