@@ -9,7 +9,7 @@ public class Kid extends Physics
     //1-rate of consumption
     //2-fuel == 1000
 
-    private static final int totalFuel = 100;
+    private static final int totalFuel = 10000;
     private double[][] thrusters = new double[3][3];
     private double[] fuel = new double[3];
     private double fitnes;

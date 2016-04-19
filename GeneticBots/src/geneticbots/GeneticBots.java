@@ -87,7 +87,7 @@ public class GeneticBots
 
             for (int j = 0; j < 3; j++)
             {
-                kid[1][j] = Math.random();
+                kid[1][j] = Math.random()* .001;
 
             }
             double sum = 0;
