@@ -8,14 +8,7 @@ public class Properties extends javax.swing.JFrame
     public Properties()
     {
         initComponents();
-        this.dFPS.setText("" + GeneticBots.fps);
-        this.sFPS.setValue(GeneticBots.fps);
-        this.dBarriers.setText("" + GeneticBots.barriers);
-        this.sBarrier.setValue(GeneticBots.barriers);
-        this.dMutation.setText("" + GeneticBots.mutation);
-        this.sMutation.setValue((int) (GeneticBots.mutation * 1000));
-        this.dPop.setText("" + GeneticBots.population);
-        this.sPop.setValue((int) (GeneticBots.population));
+        
     }
 
     /**
@@ -286,8 +279,16 @@ public class Properties extends javax.swing.JFrame
         {
             public void run()
             {
-                new Properties().setVisible(true);
-                
+                Properties p = new Properties();
+                p.setVisible(true);
+                p.dFPS.setText("" + GeneticBots.fps);
+                p.sFPS.setValue(GeneticBots.fps);
+                p.dBarriers.setText("" + GeneticBots.barriers);
+                p.sBarrier.setValue(GeneticBots.barriers);
+                p.dMutation.setText("" + GeneticBots.mutation);
+                p.sMutation.setValue((int) (GeneticBots.mutation * 1000));
+                p.dPop.setText("" + GeneticBots.population);
+                p.sPop.setValue((int) (GeneticBots.population));
             }
         });
     }
