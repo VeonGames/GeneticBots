@@ -14,25 +14,16 @@ import java.util.List;
  */
 public class Dog extends Physics
 {
-
-    public Dog(double x, double y, Color color, int shape)
-    {
-        super(x, y, color, shape);
-    }
-    /*List<List<Actor>> input;
-    List<Move> action;
-    List<
+    
     public Dog(double x, double y, int shape)
     {
-        super(x, y, Color.BLACK, 0);
-        
-    }*/
-
-    @Override
-    void move(List<Barrier> b)
-    {
+        super(x, y, Color.GRAY, 0);
         
     }
 
-    
+    @Override
+    public void move(List<Barrier> b)
+    {
+        
+    }
 }
