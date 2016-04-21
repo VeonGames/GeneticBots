@@ -290,7 +290,7 @@ public class GeneticBots
             kids.get(k).setFit(total / kids.get(k).getFit());
             sum += kids.get(k).getFit();
         }
-
+        
         double sum2 = 0;
         for (int k = 0; k < kids.size(); k++)
         {
