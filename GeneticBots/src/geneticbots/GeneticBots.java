@@ -87,7 +87,7 @@ public class GeneticBots
 
             for (int j = 0; j < 3; j++)
             {
-                kid[1][j] = Math.random()* .001;
+                kid[1][j] = Math.random()*.000001;
 
             }
             double sum = 0;
@@ -340,7 +340,7 @@ public class GeneticBots
             kid[1][j] = (p1[1][j] + p2[1][j]) / 2;
             if (Math.random() < mutation)
             {
-                kid[1][j] = Math.random();
+                kid[1][j] = Math.random()*.000001;
             }
         }
         double sum = 0;

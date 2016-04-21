@@ -39,7 +39,7 @@ public class Kid extends Physics
                 {
                     direction += Math.PI;
                 }
-                speed += Math.sqrt(Math.pow(xAngle, 2) + Math.pow(yAngle, 2)) / 100;
+                speed += Math.sqrt(Math.pow(xAngle, 2) + Math.pow(yAngle, 2)) / 200;
                 fuel[i] -= thrusters[1][i];
             }
         }
