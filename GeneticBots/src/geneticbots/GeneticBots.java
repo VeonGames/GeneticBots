@@ -304,7 +304,7 @@ public class GeneticBots
         {
             for (int j = 0; j < 2; j++)
             {
-                rand = Math.random();
+                rand = (int)(Math.random()* population);
                 for (int k = 0; k < population - 1; k++)
                 {
                     if (kids.get(k).getFit() > rand)
@@ -328,7 +328,15 @@ public class GeneticBots
 
         for (int j = 0; j < 3; j++)
         {
-            kid[0][j] = (p1[0][j] + p2[0][j]) / 2;
+            if (Math.random() > .5)
+            {
+                kid[0][j] = p1[0][j];
+            }
+            else
+            {
+                kid[0][j] = p2[0][j];
+            }
+            //kid[0][j] = (p1[0][j] + p2[0][j]) / 2;
             if (Math.random() < mutation)
             {
                 kid[0][j] = Math.random() * 360;
@@ -337,7 +345,15 @@ public class GeneticBots
 
         for (int j = 0; j < 3; j++)
         {
-            kid[1][j] = (p1[1][j] + p2[1][j]) / 2;
+            if (Math.random() > .5)
+            {
+                kid[1][j] = p1[0][j];
+            }
+            else
+            {
+                kid[1][j] = p2[0][j];
+            }
+            //kid[1][j] = (p1[1][j] + p2[1][j]) / 2;
             if (Math.random() < mutation)
             {
                 kid[1][j] = Math.random()*.000001;
@@ -349,15 +365,24 @@ public class GeneticBots
         {
             -1, -1, -1
         };
+        double tempK = 0.0;
         for (int j = 0; j < 3; j++)
         {
             if (Math.random() < mutation)
             {
-                te = kid[1][j] = Math.random();
+                te = tempK = Math.random();
                 ti[j] = te;
             } else
             {
-                te = (p1[2][j] + p2[2][j]) / 2;
+                
+                if (Math.random() > .5)
+                {
+                    te = tempK = p1[2][j];
+                } else
+                {
+                    te = tempK = p2[2][j];
+                }
+                //te = (p1[2][j] + p2[2][j]) / 2;
             }
             sum += te;
         }
@@ -368,7 +393,7 @@ public class GeneticBots
                 te = ti[j];
             } else
             {
-                te = (p1[2][j] + p2[2][j]) / sum;
+                te = (tempK) / sum;
             }
             kid[2][j] = te;
 
