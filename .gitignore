@@ -1,2 +1,4 @@
-/GeneticBots/nbproject/private/
-/GeneticBots/build/
+dist/
+nbproject/
+build\.xml
+manifest\.manifest
